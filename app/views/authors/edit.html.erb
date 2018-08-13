@@ -1,0 +1,22 @@
+<% if @author.errors.any? %>
+<div id="errors_explanation">
+  <h2>There were some errors: </h2>
+  <ul>
+    <% @author.errors.full_messages.each do |error| %>
+    <li> <%= error %> </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_tag author_path(@author), method: 'patch' do %>
+Name:
+<%= text_field_tag "name", @author.name %><br>
+Phone Number:
+<%= text_field_tag "phone_number", @author.phone_number %><br>
+Email:
+<%= text_field_tag "email", @author.email %><br>
+<%= submit_tag "Submit" %>
+
+
+<% end %>
